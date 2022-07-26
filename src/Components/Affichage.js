@@ -5,6 +5,7 @@ class Affichage extends React.Component {
     this.state = {
       items: [],
     };
+    this.fetchData();
   }
   fetchData() {
     fetch("https://jsonplaceholder.typicode.com/todos")
@@ -23,9 +24,15 @@ class Affichage extends React.Component {
         <h1> Fetch data from an api in react </h1>
         {items.map((item) =>
           item.userId === 1 && item.completed === true ? (
-            <div>✔ {item.title}</div>
+            <div>
+              <input type="checkbox" id="tachefaite" checked />
+              <label for="tache"> {item.title} </label>
+            </div>
           ) : item.userId === 1 && item.completed === false ? (
-            <div> X {item.title} </div>
+            <div>
+              <input type="checkbox" id="tacheNonFaite" />
+              <label for="tache"> {item.title} </label>
+            </div>
           ) : (
             ""
           )
